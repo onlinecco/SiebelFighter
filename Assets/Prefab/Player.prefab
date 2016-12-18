@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4283719407929536}
   - component: {fileID: 33762695212656612}
   - component: {fileID: 23542672319054434}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4402064828749280}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 33616256274673470}
   - component: {fileID: 65393502438869422}
   - component: {fileID: 23976451194732688}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4893033377906334}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 33220771648481736}
   - component: {fileID: 65759438094934204}
   - component: {fileID: 23068085865332480}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 33648176809836400}
   - component: {fileID: 65099420067586634}
   - component: {fileID: 23753792790767426}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 124284584985310484}
   - component: {fileID: 92346249405167092}
   - component: {fileID: 81673520696337174}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,9 +148,11 @@ GameObject:
   - component: {fileID: 114919923974044276}
   - component: {fileID: 114510626111372968}
   - component: {fileID: 153197153717458422}
-  m_Layer: 0
+  - component: {fileID: 114075008285929002}
+  - component: {fileID: 114881986414245200}
+  m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -517,6 +519,25 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1543363819288102}
   m_Enabled: 1
+--- !u!114 &114075008285929002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1712708106889662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8686ecf7d5d926e45b2458de8ca0499d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon:
+    name: Glock
+    damage: 40
+    range: 100
+  cam: {fileID: 20617931342732062}
+  mask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &114144371856083834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -530,9 +551,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   lookSensitivity: 3
-  thrusterForce: 1000
+  thrusterForce: 1200
   jointSpring: 15
-  jointMaxForce: 80
+  jointMaxForce: 40
 --- !u!114 &114179179846514128
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -581,6 +602,8 @@ MonoBehaviour:
   - {fileID: 114144371856083834}
   - {fileID: 20617931342732062}
   - {fileID: 81673520696337174}
+  - {fileID: 114075008285929002}
+  remoteLayerName: remotePlayer
 --- !u!114 &114510626111372968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -613,6 +636,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 20617931342732062}
   cameraRotationLimit: 85
+--- !u!114 &114881986414245200
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1712708106889662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0040eded0501df747bf56b6c23345a57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  disableOnDeath:
+  - {fileID: 114144371856083834}
+  - {fileID: 114075008285929002}
 --- !u!114 &114919923974044276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -711,7 +749,7 @@ ConfigurableJoint:
     serializedVersion: 3
     positionSpring: 20
     positionDamper: 0
-    maximumForce: 80
+    maximumForce: 40
   m_ZDrive:
     serializedVersion: 3
     positionSpring: 0
